@@ -29,7 +29,7 @@ def construct_list_from_table_html(table_html: str) -> typing.List:
     """
     Given the html for all tables on the status page, convert them to a list object for easy parsing
     """
-
+    # import pdb; pdb.set_trace()
     data = []
     rows = table_html.find_all('tr')
     for row in rows:
@@ -38,6 +38,39 @@ def construct_list_from_table_html(table_html: str) -> typing.List:
         data.append([element for element in cols if element])
 
     return data
+
+
+def parse_event_log(event_log_list) -> typing.List:
+    parsed_event_log_list = []
+    for row_number, row_data in enumerate(event_log_list[1:]):  # skip the header
+        parsed_event_log_element = []
+        if len(row_data) != 3:
+            continue
+
+        raw_time, raw_priority, description = row_data
+
+        if raw_time == "Time Not Established":
+            first_time_stamp = datetime.datetime.fromtimestamp(0).strftime('%Y-%m-%d %H:%M:%S')
+            parsed_event_log_element.append(first_time_stamp)
+
+        else:
+            parsed_timestamp = datetime.datetime.strptime(raw_time, '%a %b %d %H:%M:%S %Y').strftime(
+                "%Y-%m-%d %H:%M:%S")
+            parsed_event_log_element.append(parsed_timestamp)
+
+        priority_level = re.sub('[^[0-9]', '', raw_priority)
+
+        parsed_event_log_element.append(priority_level)
+
+        raw_priority = priority_level
+
+        parsed_event_log_element.append(description)
+
+        parsed_event_log_list.append(parsed_event_log_element)
+
+    return parsed_event_log_list
+
+
 
 
 def create_influx_ready_array(table_data: typing.List, direction: str) -> typing.List:
