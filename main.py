@@ -9,13 +9,19 @@ if __name__ == '__main__':
 
         downstream_status = retriever.construct_list_from_table_html(status_tables[1])
 
-        influx_ready_array = retriever.create_influx_ready_array(downstream_status, "downstream")
+        upstream_status = retriever.construct_list_from_table_html(status_tables[2])
+
+        downstream_influx_ready_array = retriever.create_influx_ready_array(downstream_status, "downstream")
+
+        upstream_influx_ready_array = retriever.create_influx_ready_array(upstream_status, "upstream")
 
         client = influx_handler.initialize_influx("arris")
 
-        response = influx_handler.send_data_to_influx(client, "arris", influx_ready_array)
+        response_ds = influx_handler.send_data_to_influx(client, "arris", downstream_influx_ready_array)
 
-        if response == True:
+        response_us = influx_handler.send_data_to_influx(client, "arris", upstream_influx_ready_array)
+
+        if response_ds == True and response_us == True:
             print("Success")
 
         else:
