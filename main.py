@@ -1,4 +1,7 @@
+import time
+
 import influx_handler
+import logstash_handler
 import retriever
 
 if __name__ == '__main__':
@@ -27,4 +30,6 @@ if __name__ == '__main__':
         else:
             print("Failure")
 
-    time.sleep(2)
+        time.sleep(2)
+
+        resp = logstash_handler.write_to_logstash("Finished one iteration", "warning")

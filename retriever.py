@@ -25,7 +25,6 @@ def extract_status_data(status_html_string: str) -> typing.List:
 
     return status_table
 
-
 def construct_list_from_table_html(table_html: str) -> typing.List:
     """
     Given the html for all tables on the status page, convert them to a list object for easy parsing
