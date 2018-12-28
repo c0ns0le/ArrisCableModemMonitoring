@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Log</title>
+    <meta charset="utf-8">
+    <!-- Temp disable <meta name="viewport" content="width=device-width"> -->
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="json2.js"></script>
+    <script src="main.js"></script>
+
+
+    <!-- START HTMLHEADER.HTML ADDITIONS -->
+
+    <!-- typography -->
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- layout -->
+    <link href="css/styles_layout.css" rel="stylesheet">
+    <!-- images and colors -->
+    <link id="pictures_css" href="css/styles_images.css" rel="stylesheet">
+
+    <!-- END HTMLHEADER ADDITIONS -->
+    <script type="text/javascript">
+        var cusID = 14;
+        var platformType = 0;
+
+        if (cusID == 14 || (cusID == 1 && platformType == 17)) {
+            document.getElementById('pictures_css').href = "css/styles_images_arris.css";
+        }
+    </script>
+
+</head>
+<body>
+<!-- Header Area Begin -->
+<div class="header">
+
+
+    <!-- START pageheaderA.htm -->
+
+    <!-- modal overlay semi-opaque background, black -->
+    <div id="modalUnderlayBlack" class="modalUnderlayBlack modalDisplayBlack" style="display:none;"></div>
+
+    <!-- modal overlay semi-opaque background, white -->
+    <div id="modalUnderlayWhite" class="modalUnderlayWhite modalDisplayWhite" style="display:none;"></div>
+
+
+    <!-- MESSAGE MODAL -->
+    <!-- floater w/shadow background -->
+    <div id="modalFloaterMessage" class="modalDisplayBlack modalDisplayWhite" style="display:none;"></div>
+
+    <!-- floater inset container -->
+    <div id="modalContainerMessage" class="modalDisplayBlack modalDisplayWhite" style="display:none;">
+        <div id="modalContainerMessageTitle">
+            <span class="modalContainerMessageTitleText" id="modalContainerMessageTitleText">Confirm Settings</span>
+        </div>
+        <div id="modalContainerMessageAlert" class="vertCenterWrap1">
+            <div class="vertCenterWrap2">
+                <div class="vertCenterWrap3">
+                    <div class="modalContainerMessageAlertText" id="modalContainerMessageAlertText"></div>
+                    <div class="modalContainerMessageAlertText" id="modalContainerMessageAlertTextPrompt"><strong>Do you
+                        want to continue?</strong></div>
+                    <div class="modalContainerMessageAlertButtons">
+                        <input type="button"
+                               class="modalButton"
+                               id="modalButtonYes"
+                               value="Disable WPS and Continue">
+                        <input type="button"
+                               class="modalButton"
+                               id="modalButtonNo"
+                               value="Cancel">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modalContainerMessageAlertImage"><img src="images/px1_Ux.png" alt="" class="wizardFrameSpriteImage_12">
+        </div>
+    </div>
+    <!-- END MESSAGE MODAL -->
+
+    <div id="pw1">
+        <div id="pw2">
+            <div id="pw3">
+                <div id="pw4">
+
+                    <div id="hg1">
+                        <div id="hg2">
+                            <div id="hg3">
+                                <div id="hg4">
+                                    <div id="hg5">
+                                        <div id="hg6">
+                                            <div id="hg7">
+
+                                                <div id="logo"><a href="http://www.arris.com"><img
+                                                        src="images/px1_Ux.png" alt="ARRIS Logo" title="ARRIS Logo"
+                                                        class="logo"></a></div>
+
+                                                <div id="binnacleWrapper1" class="binnacleItems_hide"
+                                                     style="display:none;">
+                                                    <div id="binnacleWrapper2" class="binnacleItems_hide"
+                                                         style="display:none;">
+                                                        <div id="binnacleWrapperLeft"><img src="images/px1_Ux.png"
+                                                                                           alt=""
+                                                                                           class="binnacleWrapperShim">
+                                                        </div>
+                                                        <div id="binnacleWrapperRight"><img src="images/px1_Ux.png"
+                                                                                            alt=""
+                                                                                            class="binnacleWrapperShim">
+                                                        </div>
+                                                        <div id="binnacleWrapperMiddle">
+                                                            <div id="binnacleInnards">
+
+                                                                <div id="binnacleIndicatorWrap"></div>
+                                                                <div id="binnacleModelName"><span
+                                                                        id="thisModelNumberIs">SB6183</span></div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end binnacleWrapper1/2 -->
+                                                    </div>
+                                                </div>
+
+                                                <!-- end divs for hg -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--gap-->
+                    <div id="tmtg">
+                        <div class="gap1">
+                            <div class="gap2">
+                                <div class="gap3">
+                                    <div class="gap4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tmg1">
+                        <div id="tmg2">
+                            <div id="tmg3">
+                                <div id="tmg4">
+                                    <div id="tmg5">
+                                        <div id="tmg6">
+                                            <!-- END pageheaderA.htm ADDITIONS -->
+                                            <script>
+                                                $(document).ready(function () {
+
+                                                    // Strip the default values.
+                                                    $("#binnacleWrapper1").removeClass("binnacleItems_0");
+                                                    $("#binnacleWrapper2").removeClass("binnacleItems_0");
+                                                    // Set number of items in binnacle (0 to 8)
+                                                    $("#binnacleWrapper1").addClass("binnacleItems_0");
+                                                    $("#binnacleWrapper2").addClass("binnacleItems_0");
+                                                    // Show the binnacle.
+                                                    $("#binnacleWrapper1").show();
+                                                    $("#binnacleWrapper2").show();
+
+                                                });
+                                                // End READY functon
+                                            </script>
+
+                                            <!-- END pageheaderA.htm -->
+
+                                            <script language="javascript" type="text/javascript">
+                                                var hiddenMenuList = '';
+                                            </script>
+
+
+                                            <div id="topMenu">
+                                            </div>
+
+                                            <script type='text/javascript'>
+
+                                                var menuCM = [
+                                                    {
+                                                        name: 'STATUS', subMenu: [
+                                                            {
+                                                                name: 'null',
+                                                                linkUrl: 'RgConnect.asp',
+                                                                menuID: 'menu3e'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        name: 'PRODUCT INFORMATION', subMenu: [
+                                                            {
+                                                                name: 'null',
+                                                                linkUrl: 'RgSwInfo.asp',
+                                                                menuID: 'menu21'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        name: 'EVENT LOG', subMenu: [
+                                                            {
+                                                                name: 'null',
+                                                                linkUrl: 'RgEventLog.asp',
+                                                                menuID: 'menu43'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        name: 'ADDRESSES', subMenu: [
+                                                            {
+                                                                name: 'null',
+                                                                linkUrl: 'RgAddress.asp',
+                                                                menuID: 'menuff'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        name: 'CONFIGURATION', subMenu: [
+                                                            {
+                                                                name: 'null',
+                                                                linkUrl: 'RgConfiguration.asp',
+                                                                menuID: 'menu39'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        name: 'HELP', subMenu: [
+                                                            {
+                                                                name: 'null',
+                                                                linkUrl: 'StatusHelp.asp',
+                                                                menuID: 'menu9d'
+                                                            }
+                                                        ]
+                                                    }
+                                                ];
+                                                var menuGW = [
+                                                    {
+                                                        name: 'HOME', subMenu: [
+                                                            {
+                                                                name: 'null',
+                                                                linkUrl: 'home.asp',
+                                                                menuID: 'menua6'
+                                                            }
+                                                        ]
+                                                    },
+
+                                                    {
+                                                        name: 'STATUS', subMenu: [
+                                                            {
+                                                                name: 'Product Information',
+                                                                linkUrl: 'RgSwInfo.asp',
+                                                                menuID: 'menu21'
+                                                            },
+
+                                                            {
+                                                                name: 'Connection',
+                                                                linkUrl: 'RgConnect.asp',
+                                                                menuID: 'menu3e'
+                                                            },
+
+                                                            {
+                                                                name: 'Security',
+                                                                linkUrl: 'RgSecurity.asp',
+                                                                menuID: 'menua'
+                                                            },
+
+                                                            {
+                                                                name: 'Diagnostics',
+                                                                linkUrl: 'RgDiagnostics.asp',
+                                                                menuID: 'menu53'
+                                                            },
+
+                                                            {
+                                                                name: 'Event Log',
+                                                                linkUrl: 'RgEventLog.asp',
+                                                                menuID: 'menu43'
+                                                            },
+
+                                                            {
+                                                                name: 'Configuration',
+                                                                linkUrl: 'RgConfiguration.asp',
+                                                                menuID: 'menu39'
+                                                            }
+                                                        ]
+                                                    },
+
+                                                    {
+                                                        name: 'BASIC', subMenu: [
+                                                            {
+                                                                name: 'Setup',
+                                                                linkUrl: 'RgSetup.asp',
+                                                                menuID: 'menu41'
+                                                            },
+
+                                                            {
+                                                                name: 'DHCP',
+                                                                linkUrl: 'RgDhcp.asp',
+                                                                menuID: 'menu13'
+                                                            },
+
+                                                            {
+                                                                name: 'DHCPv6',
+                                                                linkUrl: 'RgDhcpV6.asp',
+                                                                menuID: 'menu9f'
+                                                            },
+
+                                                            {
+                                                                name: 'IPv6 Clients',
+                                                                linkUrl: 'RgIPv6Clients.asp',
+                                                                menuID: 'menu84'
+                                                            },
+
+                                                            {
+                                                                name: 'DDNS',
+                                                                linkUrl: 'RgDdns.asp',
+                                                                menuID: 'menu6b'
+                                                            },
+
+                                                            {
+                                                                name: 'Backup and Restore',
+                                                                linkUrl: 'RgBackup.asp',
+                                                                menuID: 'menu3a'
+                                                            },
+
+                                                            {
+                                                                name: 'MoCA',
+                                                                linkUrl: 'MoCA.asp',
+                                                                menuID: 'menu93'
+                                                            },
+
+                                                            {
+                                                                name: 'USB Connect',
+                                                                linkUrl: 'USB.asp',
+                                                                menuID: 'menu96'
+                                                            },
+
+                                                            {
+                                                                name: 'Ethernet Ports',
+                                                                linkUrl: 'RgEthPort.asp',
+                                                                menuID: 'menu95'
+                                                            },
+
+                                                            {
+                                                                name: 'LED Control',
+                                                                linkUrl: 'LedControl.asp',
+                                                                menuID: 'menuab'
+                                                            }
+                                                        ]
+                                                    },
+
+                                                    {
+                                                        name: 'ADVANCED', subMenu: [
+                                                            {
+                                                                name: 'Options',
+                                                                linkUrl: 'RgOptions.asp',
+                                                                menuID: 'menu50'
+                                                            },
+
+                                                            {
+                                                                name: 'IP Filtering',
+                                                                linkUrl: 'RgIpFiltering.asp',
+                                                                menuID: 'menu2b'
+                                                            },
+
+                                                            {
+                                                                name: 'MAC Filtering',
+                                                                linkUrl: 'RgMacFiltering.asp',
+                                                                menuID: 'menu2f'
+                                                            },
+
+                                                            {
+                                                                name: 'Port Filtering',
+                                                                linkUrl: 'RgPortFiltering.asp',
+                                                                menuID: 'menu29'
+                                                            },
+
+                                                            {
+                                                                name: 'Port Triggers',
+                                                                linkUrl: 'RgPortTriggering.asp',
+                                                                menuID: 'menu1e'
+                                                            },
+
+                                                            {
+                                                                name: 'Port Forwarding',
+                                                                linkUrl: 'RgForwarding.asp',
+                                                                menuID: 'menu63'
+                                                            },
+
+                                                            {
+                                                                name: 'DMZ Host',
+                                                                linkUrl: 'RgDmzHost.asp',
+                                                                menuID: 'menu6'
+                                                            },
+
+                                                            {
+                                                                name: 'RIP',
+                                                                linkUrl: 'RgRipSetup.asp',
+                                                                menuID: 'menu8'
+                                                            },
+
+                                                            {
+                                                                name: 'Linux Apps',
+                                                                linkUrl: 'NASWebInterface/admin/index.php?user=admin',
+                                                                menuID: 'menu9e'
+                                                            }
+                                                        ]
+                                                    },
+
+                                                    {
+                                                        name: 'WIRELESS', subMenu: [
+                                                            {
+                                                                name: '802.11 Radio',
+                                                                linkUrl: 'wlanRadio.asp',
+                                                                menuID: 'menu20'
+                                                            },
+
+                                                            {
+                                                                name: 'Primary Network Settings',
+                                                                linkUrl: 'wlanPrimaryNetwork.asp',
+                                                                menuID: 'menu68'
+                                                            },
+
+                                                            {
+                                                                name: 'Guest Network Settings',
+                                                                linkUrl: 'wlanGuestNetwork.asp',
+                                                                menuID: 'menu10'
+                                                            },
+
+                                                            {
+                                                                name: 'Access Control',
+                                                                linkUrl: 'wlanAccess.asp',
+                                                                menuID: 'menu32'
+                                                            },
+
+                                                            {
+                                                                name: 'Extend Network Range',
+                                                                linkUrl: 'wlanBridging.asp',
+                                                                menuID: 'menuc'
+                                                            },
+
+                                                            {
+                                                                name: 'WMM Quality of Service',
+                                                                linkUrl: 'wlanWmm.asp',
+                                                                menuID: 'menu42'
+                                                            },
+
+                                                            {
+                                                                name: 'Performance Enhancements',
+                                                                linkUrl: 'wlanMedia.asp',
+                                                                menuID: 'menua8'
+                                                            },
+
+                                                            {
+                                                                name: 'Advanced',
+                                                                linkUrl: 'wlanAdvanced.asp',
+                                                                menuID: 'menu33'
+                                                            }
+                                                        ]
+                                                    },
+
+                                                    {
+                                                        name: 'FIREWALL', subMenu: [
+                                                            {
+                                                                name: 'Protection Level',
+                                                                linkUrl: 'RgContentFilter.asp',
+                                                                menuID: 'menu52'
+                                                            },
+
+                                                            {
+                                                                name: 'Parental Control',
+                                                                linkUrl: 'RgFiltering.asp',
+                                                                menuID: 'menu8e'
+                                                            },
+
+                                                            {
+                                                                name: 'Local Log',
+                                                                linkUrl: 'RgFirewallEL.asp',
+                                                                menuID: 'menu4d'
+                                                            },
+
+                                                            {
+                                                                name: 'Remote Log',
+                                                                linkUrl: 'RgFirewallRL.asp',
+                                                                menuID: 'menu46'
+                                                            }
+                                                        ]
+                                                    },
+
+                                                    {
+                                                        name: 'VPN', subMenu: [
+                                                            {
+                                                                name: 'L2TPv3',
+                                                                linkUrl: 'RgVpnL2tpV3.asp',
+                                                                menuID: 'menu7d'
+                                                            },
+
+                                                            {
+                                                                name: 'Event Log',
+                                                                linkUrl: 'RgVpnEventLog.asp',
+                                                                menuID: 'menu58'
+                                                            }
+                                                        ]
+                                                    },
+
+                                                    {
+                                                        name: 'TELEPHONY', subMenu: [
+                                                            {
+                                                                name: 'Status',
+                                                                linkUrl: 'MtaStatus.asp',
+                                                                menuID: 'menu3d'
+                                                            },
+
+                                                            {
+                                                                name: 'MTA DHCP',
+                                                                linkUrl: 'MtaDhcp.asp',
+                                                                menuID: 'menu6a'
+                                                            },
+
+                                                            {
+                                                                name: 'Provisioning Details',
+                                                                linkUrl: 'MtaProvisioning.asp',
+                                                                menuID: 'menu45'
+                                                            },
+
+                                                            {
+                                                                name: 'QoS Parameters',
+                                                                linkUrl: 'MtaQos.asp',
+                                                                menuID: 'menu44'
+                                                            },
+
+                                                            {
+                                                                name: 'Event Log',
+                                                                linkUrl: 'MtaEventLog.asp',
+                                                                menuID: 'menu26'
+                                                            },
+
+                                                            {
+                                                                name: 'Battery Charger',
+                                                                linkUrl: 'BatController.asp',
+                                                                menuID: 'menu30'
+                                                            },
+
+                                                            {
+                                                                name: 'Power Management',
+                                                                linkUrl: 'BatInterfaceDelay.asp',
+                                                                menuID: 'menu3f'
+                                                            },
+
+                                                            {
+                                                                name: 'Battery Pack Information',
+                                                                linkUrl: 'BatUps.asp',
+                                                                menuID: 'menu5c'
+                                                            }
+                                                        ]
+                                                    },
+
+                                                    {
+                                                        name: 'HELP', subMenu: [
+                                                            {
+                                                                name: 'Overview',
+                                                                linkUrl: 'help.asp',
+                                                                menuID: 'menu9d'
+                                                            },
+
+                                                            {
+                                                                name: 'About',
+                                                                linkUrl: 'About.asp',
+                                                                menuID: 'menua7'
+                                                            }
+                                                        ]
+                                                    }
+                                                ];
+                                                var menuItem = menuCM;
+                                            </script>
+
+                                            <!-- START pageheaderB.htm -->
+
+                                            <!-- START pageheaderB.htm ADDITIONS -->
+                                            <!-- end divs for tmg -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--gap-->
+                    <div id="tmbg">
+                        <div class="gap1">
+                            <div class="gap2">
+                                <div class="gap3">
+                                    <div class="gap4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bg1">
+                        <div id="bg2">
+                            <div id="bg3">
+                                <div id="bg4">
+                                    <!-- END pageheaderB.htm ADDITIONS -->
+
+                                    <!-- END pageheaderB.htm -->
+                                </div> <!-- End Header -->
+
+                                <div class="container">
+                                    <div class="subHeader">
+                                        <div class="subHeadcontent">Event Log</div>
+                                    </div>
+
+                                    <div class="breadcrumbs">
+                                        <a href="home.asp"> Home</a> > <a href="RgSwInfo.asp">Status</a> > Event Log
+                                    </div>
+
+                                    <div class="content">
+                                        <div class="introText">
+                                            <p>The table below contains the log of events that the SB6183 has detected.
+                                                This log can be important to the service provider to help diagnose and
+                                                correct problems, if any should occur.
+                                            </p>
+                                        </div>
+
+                                        <form action="/goform/RgEventLog.pl" method="post" name="RgEventLog">
+                                            <table>
+                                                <tr>
+                                                    <td><input type="hidden" name="GetNonce" size=31 value=></td>
+                                                </tr>
+                                            </table>
+
+                                            <table class="simpleTable">
+                                                <tr>
+                                                    <th>Time
+                                                    </th>
+                                                    <th>Priority
+                                                    </th>
+                                                    <th>Description
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Thu Dec 13 07:13:05 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Started Unicast Maintenance Ranging - No Response
+                                                        received - T3
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Notice (6)
+                                                    </td>
+                                                    <td width="450">Honoring MDD; IP provisioning mode = IPv6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:00:00:00:00:00;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire FEC
+                                                        framing;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:00:00:00:00:00;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:00:00:00:00:00;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Maintenance Broadcasts for Ranging opportunities
+                                                        received - T2
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:ae:ec:64;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Wed Nov 28 01:16:49 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Received Response to Broadcast Maintenance Request,
+                                                        But no Unicast Maintenance opportunities received - T4 time
+                                                        out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Wed Nov 28 01:14:05 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire FEC
+                                                        framing;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Wed Nov 28 01:13:55 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Wed Nov 28 01:13:45 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Wed Nov 28 01:13:38 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Sat Nov 17 10:07:06 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire FEC
+                                                        framing;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Sat Nov 17 10:06:50 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire FEC
+                                                        framing;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Nov 13 20:55:41 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Started Unicast Maintenance Ranging - No Response
+                                                        received - T3
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Thu Oct 25 01:23:58 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Unicast Ranging Received Abort Response -
+                                                        Re-initializing
+                                                        MAC;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Mon Oct 22 21:54:38 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Started Unicast Maintenance Ranging - No Response
+                                                        received - T3
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Thu Sep 06 16:59:09 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Resetting the cable modem due to docsDevResetNow
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">TFTP Request Retries exceeded, CM unable to
+                                                        register
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">TFTP failed - Request sent - No
+                                                        Response;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Mon Sep 03 14:09:03 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Resetting the cable modem due to docsDevResetNow
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:00:00:00:00:00;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Received Response to Broadcast Maintenance Request,
+                                                        But no Unicast Maintenance opportunities received - T4 time
+                                                        out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Started Unicast Maintenance Ranging - No Response
+                                                        received - T3
+                                                        time-out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:01:5c:65:76:6b;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:00:00:00:00:00;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire FEC
+                                                        framing;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:00:00:00:00:00;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:00:00:00:00:00;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:46:36 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire FEC
+                                                        framing;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=00:00:00:00:00:00;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:46:34 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Received Response to Broadcast Maintenance Request,
+                                                        But no Unicast Maintenance opportunities received - T4 time
+                                                        out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:46:34 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:46:19 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Received Response to Broadcast Maintenance Request,
+                                                        But no Unicast Maintenance opportunities received - T4 time
+                                                        out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:46:19 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:46:05 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Received Response to Broadcast Maintenance Request,
+                                                        But no Unicast Maintenance opportunities received - T4 time
+                                                        out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:46:05 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:45:49 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Received Response to Broadcast Maintenance Request,
+                                                        But no Unicast Maintenance opportunities received - T4 time
+                                                        out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:45:49 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Tue Aug 14 10:44:32 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Fri Aug 10 13:10:35 2018
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">Received Response to Broadcast Maintenance Request,
+                                                        But no Unicast Maintenance opportunities received - T4 time
+                                                        out;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.1;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">No Ranging Response received - T3 time-out</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="169">Time Not Established
+                                                    </td>
+                                                    <td width="87">Critical (3)
+                                                    </td>
+                                                    <td width="450">SYNC Timing Synchronization failure - Failed to
+                                                        acquire QAM/QPSK symbol
+                                                        timing;;CM-MAC=74:ea:e8:ee:5d:7f;CMTS-MAC=e4:d3:f1:80:f2:c9;CM-QOS=1.0;CM-VER=3.0;
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td align="Center" colspan="3">
+                                                        <input type="submit" value="Clear Log" OnClick="ClearLog();">
+                                                        <input type="hidden" name="SnmpClearEventLog" value=0>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </form>
+                                    </div><!-- end Content Area -->
+
+                                    <br clear="all" class="clearfloat">
+                                    <div class="spacer40"></div>
+
+                                </div> <!-- end container -->
+
+                                <!-- Footer and Sitemap -->
+
+                                <!-- START footer.htm ADDITIONS -->
+                                <!-- end divs for bc -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--gap-->
+                <div id="bmtg">
+                    <div class="gap1">
+                        <div class="gap2">
+                            <div class="gap3">
+                                <div class="gap4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="bmg1">
+                    <div id="bmg2">
+                        <div id="bmg3">
+                            <div id="bmg4">
+                                <div id="bmg5">
+                                    <div id="bmg6">
+
+                                        <div id="siteMapBottom"></div>
+                                        <br clear="all" class="clearfloat">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--gap-->
+                <div id="bmbg">
+                    <div class="gap1">
+                        <div class="gap2">
+                            <div class="gap3">
+                                <div class="gap4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="fg1">
+                    <div id="fg2">
+                        <div id="fg3">
+                            <div id="fg4">
+                                <div id="fg5">
+                                    <div id="fg6">
+                                        <div id="fg7">
+
+                                            <div id="logo_bottom"><a href="http://www.arris.com"><img
+                                                    src="images/px1_Ux.png" alt="ARRIS" title="ARRIS"
+                                                    class="logo_bottom"></a></div>
+
+                                            <div id="copyright">
+                                                <a href="http://www.arris.com">&copy;2016 ARRIS Group, Inc. ALL RIGHTS
+                                                    RESERVED.</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="fgbl1">
+                    <div id="fgbl2">
+                        <div id="fgbl3">
+                            <div id="fgbl4"><img src="images/px1_Ux.png" alt="" title="" class="fgbl3"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- end divs for pw -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END footer.htm ADDITIONS -->
+
+
+<!-- Insert Scripts Here -->
+<script>
+    function ClearLog() {
+        window.document.RgEventLog.SnmpClearEventLog.value = 1;
+    }
+</script>
+<!-- End Scripts -->
+
+</body>
+</html>
