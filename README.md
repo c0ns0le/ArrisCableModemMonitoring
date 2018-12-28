@@ -1,7 +1,7 @@
 # Background
 After having some performance issues with my cable modem, I wanted to start monitoring it so that Comcast could figure out what was going on.
 
-Unfortunately, I found out from a Comcast employee that SMNP access to the cable modems is blocked from outside of their internal network, so my only option was to just constantly check the status page/event log that the modem provides. Or was it?
+Unfortunately, I found out from a Comcast employee that SNMP access to the cable modems is blocked from outside of their internal network, so my only option was to just constantly check the status page/event log that the modem provides. Or was it?
 
 
 # About
