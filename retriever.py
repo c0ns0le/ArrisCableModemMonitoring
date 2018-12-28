@@ -7,18 +7,23 @@ import bs4
 import requests
 
 
-# read html file in as string
-# pass it to BS parser
-
+# TODO: Extract the IP address of the cable-modem to be a parameter passed through the command line
 def make_page_request(url: str = "http://192.168.100.1") -> str:
+    """
+    Makes a GET request to a specified URL and then returns the HTML of that page as a string
+    :param url:
+    :return:
+    """
     page = requests.get(url)
     return page.content
 
 
-def extract_status_data(status_html_string: str) -> typing.List:
-    # with open("html/status_page.html", "r") as status_html:
-    #     status_html_string = ''.join([line.replace('\n', '') for line in status_html.readlines()])
-
+def extract_table_data(status_html_string: str) -> typing.List:
+    """
+    Parses a table in HTML form into a list of lists, where each inner list represents a row in that table.
+    :param status_html_string:
+    :return:
+    """
     beautifulsoup = bs4.BeautifulSoup(status_html_string, "html.parser")
 
     status_table = beautifulsoup.find_all("table", attrs={'class' : 'simpleTable'})
@@ -26,10 +31,6 @@ def extract_status_data(status_html_string: str) -> typing.List:
     return status_table
 
 def construct_list_from_table_html(table_html: str) -> typing.List:
-    """
-    Given the html for all tables on the status page, convert them to a list object for easy parsing
-    """
-    # import pdb; pdb.set_trace()
     data = []
     rows = table_html.find_all('tr')
     for row in rows:
@@ -41,9 +42,15 @@ def construct_list_from_table_html(table_html: str) -> typing.List:
 
 
 def parse_event_log(event_log_list) -> typing.List:
+    """
+    Parses the event log taken in as a list -- mostly timestamp conversions and removing non-numeric values from the priority list
+    :param event_log_list:
+    :return: A list where all timestamps are replaced with UTC timestamps, and priority level is integer-type only
+    """
     parsed_event_log_list = []
     for row_number, row_data in enumerate(event_log_list[1:]):  # skip the header
         parsed_event_log_element = []
+        # TODO : Change this to a list comprehension
         if len(row_data) != 3:
             continue
 
@@ -62,7 +69,7 @@ def parse_event_log(event_log_list) -> typing.List:
 
         parsed_event_log_element.append(priority_level)
 
-        raw_priority = priority_level
+        # raw_priority = priority_level
 
         parsed_event_log_element.append(description)
 
@@ -75,7 +82,7 @@ def parse_event_log(event_log_list) -> typing.List:
 
 def create_influx_ready_array(table_data: typing.List, direction: str) -> typing.List:
     """
-    A list of lists, where each inner list represents a row in the table
+    Given a list of lists representing the table data, this functions converts them to the standard array of JSON objects that InfluxDB requires
     :param table_data:
     :return:
     """
@@ -84,23 +91,15 @@ def create_influx_ready_array(table_data: typing.List, direction: str) -> typing
     column_headers_list = rows_list[0]
     number_of_channels = len(rows_list) - 1
     for channel_row_number, channel_row_data in enumerate(rows_list[1:]):
-        # start at column #2
+        # start at column #2, first column only contains ID data
         for value_index, value_to_report in enumerate(channel_row_data):
-            if value_index == 3 or value_index == 0:  # redundant to make a measurement on the channel id or channel itself
-                continue
-
-            if value_index == 1 or value_index == 2:
+            if value_index in range(0, 4):
+                # The values in the 0th-3rd columns aren't numeric
                 continue
 
             measurement_dict = {}
-            # get the "key" for the measurement name
+            # For some reason, Grafana doesn't play nice with using spaces in measurement keys?
             measurement_dict["measurement"] = column_headers_list[value_index].replace(" ", "_")
-
-            # measurement_dict["tags"] = {}
-            # measurement_dict["tags"] = socket.gethostname()
-            # import pdb; pdb.set_trace()
-            # measurement_dict["tags"]["channel_direction"] +=  str(direction)
-            # measurement_dict["tags"]["channel_id"] = channel_row_data[3]
 
             measurement_dict["tags"] = {"host": socket.gethostname(),
                                         "channel_direction": str(direction),
@@ -110,8 +109,6 @@ def create_influx_ready_array(table_data: typing.List, direction: str) -> typing
                 "value": float(re.sub('[^[0-9]', '', value_to_report))}
 
             measurement_dict["time"] = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-
-            # import pdb; pdb.set_trace()
 
             measurements_array.append(measurement_dict)
 
